@@ -1,0 +1,44 @@
+version: '3.7'
+
+services:
+  trino-coordinator:
+    image: 'trinodb/trino:latest'
+    hostname: trino-coordinator
+    ports:
+      - '8080:8080'
+    volumes:
+      - ./etc:/etc/trino-environment
+    networks:
+      - trino-network
+
+  postgres:
+    image: postgres:10.5
+    restart: always
+    environment: 
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    logging:
+      options:
+        max-size: 10m
+        max-file: '3'
+    networks:
+      - trino-network
+    ports:
+      - '5438:5432'
+
+  # mysql:
+  #   image: mysql:latest
+  #   hostname: mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: admin
+  #     MYSQL_USER: admin
+  #     MYSQL_PASSWORD: admin
+  #     MYSQL_DATABASE: tiny
+  #   ports:
+  #     - '3310:3310'
+  #   networks:
+  #     - trino-network
+
+networks:
+  trino-network:
+    driver: bridge
