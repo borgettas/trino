@@ -7,12 +7,12 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./etc:/etc/trino-environment
+      - ./etc:/etc/trino-env
     networks:
       - trino-network
 
   postgres:
-    image: postgres:10.5
+    image: postgres:16.1
     restart: always
     environment: 
       - POSTGRES_USER=postgres
@@ -25,6 +25,9 @@ services:
       - trino-network
     ports:
       - '5438:5432'
+    volumes:
+      - ./sources/postgres/sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+      - ./sources/postgres/sql/fill_tables.sql:/docker-entrypoint-initdb.d/fill_tables.sql
 
   # mysql:
   #   image: mysql:latest
