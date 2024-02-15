@@ -1,5 +1,13 @@
+CREATE CATALOG postgres USING postgresql
+ WITH (
+   "connection-url"='jdbc:pg:localhost:5438',
+   "connection-user"='postgres',
+   "connection-password"='postgres'
+ );
+
+
 -server
--Xmx4G
+-Xmx16G
 -XX:InitialRAMPercentage=80
 -XX:MaxRAMPercentage=80
 -XX:G1HeapRegionSize=32M
@@ -12,5 +20,7 @@
 -XX:PerBytecodeRecompilationCutoff=10000
 -Djdk.attach.allowAttachSelf=true
 -Djdk.nio.maxCachedBufferSize=2000000
+-Dfile.encoding=UTF-8
+# Reduce starvation of threads by GClocker, recommend to set about the number of cpu cores (JDK-8192647)
 -XX:+UnlockDiagnosticVMOptions
--XX:+UseAESCTRIntrinsics
+-XX:GCLockerRetryAllocationCount=32
