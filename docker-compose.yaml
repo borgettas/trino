@@ -7,7 +7,7 @@ services:
     ports:
       - '8080:8080'
     volumes:
-      - ./etc:/etc/trino-env
+      - ./etc:/etc/trino
     networks:
       - trino-network
 
