@@ -4,6 +4,10 @@ up:
 down:
 	docker compose down
 
+re:
+	make down;
+	make up;
+
 it:
 	docker container exec -it trino-trino-coordinator-1 trino
 
