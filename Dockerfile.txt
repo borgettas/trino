@@ -1,3 +1,8 @@
+FROM trinodb/trino:latest
+# Atualize o índice de pacotes e instale o cliente PostgreSQL
+RUN apt-get update && apt-get install -y postgresql-client
+
+
 # FROM openjdk:23-slim-bullseye
 
 # WORKDIR /opt
