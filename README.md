@@ -28,7 +28,7 @@ make down
 ## Stages
 - [x] Deploy Trino #1
 - [x] Deploy Postgres
-- [ ] Connecting Trino on Postgres
+- [x] Connecting Trino on Postgres
 - [ ] Deploy MySQL
 - [ ] Deploy PySpark
 - [ ] (ETL) Get data from Sources
