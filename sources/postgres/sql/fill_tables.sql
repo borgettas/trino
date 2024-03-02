@@ -1,2 +1,2 @@
-INSERT INTO country(name) VALUES ('São José dos Campos');
-INSERT INTO country(name) VALUES ('Jacareí');
+INSERT INTO country(name) VALUES ('Sao Jose dos Campos');
+INSERT INTO country(name) VALUES ('Jacarei');
